@@ -2,13 +2,11 @@
 <h3 align="center">Offensive Security Researcher&nbsp;|&nbsp;Red Team&nbsp;|&nbsp;CVE Contributor</h3>
 
 <p align="center">
-  <!-- domain updated to demolab.com (old herokuapp domain is deprecated) -->
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&center=true&vCenter=true&width=640&lines=Penetration+Tester+%26+Vulnerability+Researcher;Adversary+Emulation+%C2%B7+TLPT+%C2%B7+Red+Team+Operations;Breaking+the+MCP+ecosystem%2C+one+server+at+a+time;Always+Learning+%26+Sharing" alt="Typing SVG" />
 </p>
 
 <p align="center">
   <a href="https://skypoc.wordpress.com"><img src="https://img.shields.io/badge/Blog-skypoc.wordpress.com-21759B?style=flat-square&logo=wordpress&logoColor=white"/></a>
-  <!-- TODO: replace with your public LinkedIn vanity URL, or delete this line -->
   <img src="https://img.shields.io/badge/Based_in-Japan_%F0%9F%87%AF%F0%9F%87%B5-555?style=flat-square"/>
   <img src="https://img.shields.io/badge/Lang-中文_%2F_日本語_%2F_English-555?style=flat-square"/>
 </p>
@@ -28,7 +26,6 @@
 
 ## 🏅 Certifications
 
-<!-- Ordered by weight: OffSec core first, then cloud/specialist, then foundational. -->
 <p align="center">
   <img src="oscp.svg"  alt="OSCP"  height="100"/>
   <img src="osep.png"  alt="OSEP"  height="100"/>
@@ -69,14 +66,33 @@
   <img src="cvelogo.png" alt="CVE" height="90"/>
 </p>
 
-- 📌 **Published CVEs** across open-source and MCP-ecosystem projects
-- 🏆 **Hall of Fame / Acknowledgements** — recognized by multiple major vendors (incl. Japanese enterprises) and listed in national CERT acknowledgements
-- 🧵 Selected write-ups available on the [blog](https://skypoc.wordpress.com)
+<p align="center">
+  <img src="https://img.shields.io/badge/CVEs_Published-18%2B-DD0000?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/IPA_Acknowledgements-7-0066CC?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Hall_of_Fame-Multiple_Vendors-DAA520?style=for-the-badge"/>
+</p>
 
-<!-- Optional, only if you want it concrete:
-- CVE-2026-XXXXX (dbt-mcp) · GHSA-xxxx (Contentful MCP) · ...
-- Hall of Fame: Rakuten · Mercari · BANDAI NAMCO · Neo4j · ...
--->
+### Published CVEs
+
+[CVE-2026-44968](https://nvd.nist.gov/vuln/detail/CVE-2026-44968) &nbsp;·&nbsp;
+[CVE-2026-44969](https://nvd.nist.gov/vuln/detail/CVE-2026-44969) &nbsp;·&nbsp;
+[CVE-2026-44970](https://nvd.nist.gov/vuln/detail/CVE-2026-44970) &nbsp;·&nbsp;
+[CVE-2026-48529](https://nvd.nist.gov/vuln/detail/CVE-2026-48529) &nbsp;·&nbsp;
+[CVE-2026-52869](https://nvd.nist.gov/vuln/detail/CVE-2026-52869) &nbsp;·&nbsp;
+[CVE-2026-53708](https://nvd.nist.gov/vuln/detail/CVE-2026-53708) &nbsp;·&nbsp;
+[CVE-2026-53709](https://nvd.nist.gov/vuln/detail/CVE-2026-53709) &nbsp;·&nbsp;
+[CVE-2026-53957](https://nvd.nist.gov/vuln/detail/CVE-2026-53957) &nbsp;·&nbsp;
+[CVE-2026-54357](https://nvd.nist.gov/vuln/detail/CVE-2026-54357) &nbsp;·&nbsp;
+[CVE-2026-54358](https://nvd.nist.gov/vuln/detail/CVE-2026-54358)
+
+### 🏆 Acknowledgements
+
+| Program | |
+|---------|--|
+| Responsible Disclosure Acknowledgment | Rakuten · Mercari · BANDAI NAMCO · Sky · Neo4j · MISP Project · and more |
+| 📜 National CERT | IPA (情報処理推進機構) — **7** acknowledgements |
+
+> 🧵 Selected write-ups and PoCs available on the [blog](https://skypoc.wordpress.com)
 
 ---
 
