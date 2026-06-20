@@ -67,23 +67,27 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/CVEs_Published-18%2B-DD0000?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/CVEs_Published-20-DD0000?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/IPA_Acknowledgements-7-0066CC?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Hall_of_Fame-Multiple_Vendors-DAA520?style=for-the-badge"/>
 </p>
 
 ### Published CVEs
 
-[CVE-2026-44968](https://nvd.nist.gov/vuln/detail/CVE-2026-44968) &nbsp;·&nbsp;
-[CVE-2026-44969](https://nvd.nist.gov/vuln/detail/CVE-2026-44969) &nbsp;·&nbsp;
-[CVE-2026-44970](https://nvd.nist.gov/vuln/detail/CVE-2026-44970) &nbsp;·&nbsp;
-[CVE-2026-48529](https://nvd.nist.gov/vuln/detail/CVE-2026-48529) &nbsp;·&nbsp;
-[CVE-2026-52869](https://nvd.nist.gov/vuln/detail/CVE-2026-52869) &nbsp;·&nbsp;
-[CVE-2026-53708](https://nvd.nist.gov/vuln/detail/CVE-2026-53708) &nbsp;·&nbsp;
-[CVE-2026-53709](https://nvd.nist.gov/vuln/detail/CVE-2026-53709) &nbsp;·&nbsp;
-[CVE-2026-53957](https://nvd.nist.gov/vuln/detail/CVE-2026-53957) &nbsp;·&nbsp;
-[CVE-2026-54357](https://nvd.nist.gov/vuln/detail/CVE-2026-54357) &nbsp;·&nbsp;
-[CVE-2026-54358](https://nvd.nist.gov/vuln/detail/CVE-2026-54358)
+| CVE | Vendor | CVSS | Severity |
+|-----|--------|------|----------|
+| CVE-2026-53709 | IBM  | 9.8 | Critical |
+| CVE-2026-11719 | Google  | 8.6 | High |
+| CVE-2026-53957 | Contentful | 7.7 | High |
+| CVE-2026-54358 | MISP Project | 7.5 | High |
+| CVE-2026-52869 | Anthropic | 7.1 | High |
+| CVE-2026-44968 / 44969 / 44970 | dbt Labs | 6.7 | Medium |
+| CVE-2026-53708 | IBM | 6.6 | Medium |
+| CVE-2026-48529 ★ | GitHub | 6.0 | Medium |
+| CVE-2026-54357 | MISP Project | 5.1 | Medium |
+| CVE-2026-6948 | Rapid7 | 4.9 | Medium |
+
+<sub>★ The world's first publicly disclosed vulnerability in GitHub's MCP Server. </sub>
 
 ### 🏆 Acknowledgements
 
