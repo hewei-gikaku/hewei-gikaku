@@ -1,8 +1,8 @@
 <h1 align="center">HE WEI（ギカク / Gikaku）</h1>
-<h3 align="center">Offensive Security Researcher&nbsp;|&nbsp;Red Team&nbsp;|&nbsp;CVE Contributor</h3>
+<h3 align="center">Offensive Security Researcher&nbsp;|&nbsp;Red Team&nbsp;|&nbsp;Vulnerability Research</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&center=true&vCenter=true&width=640&lines=Penetration+Tester+%26+Vulnerability+Researcher;Adversary+Emulation+%C2%B7+TLPT+%C2%B7+Red+Team+Operations;Breaking+the+MCP+ecosystem%2C+one+server+at+a+time;From+web+apps+to+kernel+internals" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&center=true&vCenter=true&width=700&lines=Red+Team+Operations+%C2%B7+TLPT+%C2%B7+Adversary+Emulation;Linux+Kernel+%C2%B7+libvirt+%C2%B7+Native+Code+Security;Breaking+Trust+Boundaries+from+MCP+to+Systems;From+web+apps+to+kernel+internals" alt="Typing SVG" />
 </p>
 
 <p align="center">
@@ -18,10 +18,12 @@
 - Offensive security focused on **penetration testing, adversary emulation and vulnerability research**
 - **Red Team** @ **Sophos** · Secureworks CTU™ Adversary Group
 - Day job covers **APT emulation**, **TLPT** (Threat-Led Penetration Testing), and full-scope **red team operations**
-- Currently auditing the **MCP (Model Context Protocol) ecosystem** across 20+ vendors, covering SSRF, OAuth and DCR abuse, token confusion, and supply-chain attack surface
-- Also active in **native-code research**, with fixes merged into the Linux kernel mainline and credited findings on Apple platforms
+- Vulnerability research spans the **Linux kernel**, **libvirt and virtualization security**, **Apple platform internals**, and the **MCP / LLM tooling ecosystem**
+- Published **40 CVEs** across major vendors and open-source projects including **Red Hat, Apple, Linux kernel, Google, Anthropic, IBM, GitHub, HashiCorp, Rapid7**, and others
+- Recognized by the **Microsoft Security Response Center (MSRC)** with a **2027 Special Mention**, and by **Google** with **Honorable Mentions** for security research
+- Active in **native-code and systems security research**, with fixes merged into the Linux kernel mainline and coordinated disclosures across major vendors and open-source projects
 - Bilingual security blogger in English and 日本語, publishing write-ups, PoCs, and research notes
-- Happy to talk about **web, AD, and cloud pentest, adversary emulation, and coordinated vulnerability disclosure**
+- Happy to talk about **web, AD and cloud pentest, Azure red teaming, adversary emulation, vulnerability research, and coordinated disclosure**
 
 ---
 
@@ -45,7 +47,7 @@
 
 | Red Team / Adversary Emulation | Vulnerability Research | Cloud / Infra |
 |--------------------------------|------------------------|---------------|
-| Adversary Emulation (APT)<br/>TLPT&nbsp;/&nbsp;Threat-Led PT<br/>Active Directory PT<br/>Web&nbsp;/&nbsp;Network PT<br/>OSINT | Source Code Review<br/>Memory Safety&nbsp;/&nbsp;Native Code<br/>Coordinated Disclosure<br/>PoC Development | AWS Security<br/>Container&nbsp;/&nbsp;K8s<br/>MCP&nbsp;/&nbsp;API Security |
+| Adversary Emulation (APT)<br/>TLPT&nbsp;/&nbsp;Threat-Led PT<br/>Active Directory PT<br/>Web&nbsp;/&nbsp;Network PT<br/>OSINT | Source Code Review<br/>Memory Safety&nbsp;/&nbsp;Native Code<br/>Kernel&nbsp;/&nbsp;Virtualization Security<br/>Trust Boundary Analysis<br/>Coordinated Disclosure<br/>PoC Development | Azure Red Team&nbsp;/&nbsp;Entra ID<br/>AWS Security<br/>Cloud Attack Paths<br/>Container&nbsp;/&nbsp;K8s<br/>MCP&nbsp;/&nbsp;API Security |
 
 ### Core Tooling
 
@@ -69,11 +71,12 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/CVEs_Published-24-DD0000?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Critical_%26_High-11-8B0000?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Vendors_Affected-10-B22222?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/CVEs_Published-40-DD0000?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Critical_%26_High-14-8B0000?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Vendors_%26_Projects-12-B22222?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/MSRC-2027_Special_Mention-0078D4?style=for-the-badge&logo=microsoft&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Google-Honorable_Mentions-4285F4?style=for-the-badge&logo=google&logoColor=white"/>
   <img src="https://img.shields.io/badge/IPA_Acknowledgements-7-0066CC?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Hall_of_Fame-Multiple_Vendors-DAA520?style=for-the-badge"/>
 </p>
 
 ### Application, Cloud and MCP Ecosystem
@@ -106,27 +109,39 @@
 <sub>★ The world's first publicly disclosed vulnerability in GitHub's MCP Server.</sub><br/>
 <sub>† GHSA severity rating. NVD scoring is still pending for this record.</sub>
 
-### Operating System and Kernel
+### Systems, Kernel and Virtualization
 
-<sub>Apple and the kernel.org CNA do not publish CVSS base scores for their advisories, so these records are listed by component and bug class instead.</sub>
+| CVE | Vendor / Project | Component | CVSS | Severity / Class |
+|-----|------------------|-----------|------|------------------|
+| CVE-2026-68326 | Linux Kernel | `drivers/net/wireless/marvell/mwifiex/uap_event.c` | 8.8 | High · Slab out-of-bounds read |
+| CVE-2026-63622 | Red Hat / libvirt | `swtpm` state handling | 7.8 | High · Sandbox boundary privilege escalation |
+| CVE-2026-68402 | Linux Kernel | `net/wireless/scan.c` / `cfg80211` | 7.1 | High · Slab out-of-bounds read |
+| CVE-2026-63623 | Red Hat / libvirt | Storage volume clone / convert | 5.5 | Medium · Guest disk information disclosure |
+| CVE-2026-43806 | Apple | macOS `mDNSResponder` | 5.5 | Medium · Local denial of service |
+| CVE-2026-64339 | Linux Kernel | `drivers/usb/misc/usbio.c` | — | Slab out-of-bounds read / kernel memory disclosure |
 
-| CVE | Vendor / Project | Component | Class |
-|-----|------------------|-----------|-------|
-| CVE-2026-43806 | Apple | macOS mDNSResponder | Out-of-bounds read |
-| CVE-2026-64339 | Linux Kernel (kernel.org CNA) | `usb: misc: usbio` | Out-of-bounds read |
+<sub>CVE-2026-43806 is scored 5.5 Medium by CISA-ADP. The kernel.org CNA record for CVE-2026-64339 does not currently provide a public CVSS base score.</sub>
 
 ### Research Highlights
 
-- **MCP ecosystem audit** spanning Google, Anthropic, IBM, HashiCorp, GitHub, Contentful, dbt Labs, MISP, and Rapid7, forming a cross-vendor study of how trust boundaries fail in LLM tooling
-- **Linux kernel** patches merged into mainline, with CVE-2026-64339 assigned by the kernel.org CNA
-- **Apple platform research** on macOS system daemons, credited in CVE-2026-43806
+- **Linux kernel** · Discovered and reported three kernel vulnerabilities, including **CVE-2026-68326**, **CVE-2026-68402**, and **CVE-2026-64339**, covering wireless and USB attack surfaces with fixes integrated into upstream development
+- **libvirt / Red Hat** · Discovered **CVE-2026-63622**, a filesystem trust-boundary flaw allowing a compromised `swtpm` service context to influence host-side ownership changes, and **CVE-2026-63623**, a storage-volume permission window exposing guest disk contents during clone and convert operations
+- **Apple platform** · Credited by Apple for **CVE-2026-43806** in macOS `mDNSResponder`
+- **MCP ecosystem** · Cross-vendor research spanning Google, Anthropic, IBM, HashiCorp, GitHub, Contentful, dbt Labs, MISP, and Rapid7, studying trust-boundary failures across LLM tooling
+- **Microsoft Security Response Center** · Recognized as **HE WEI** in the **MSRC 2027 Special Mentions**
+- **Google Security** · Received **Honorable Mentions** for vulnerability research and responsible disclosure
 
 ### 🏆 Acknowledgements
 
-| Program | |
-|---------|--|
-| Responsible Disclosure Acknowledgment | Rakuten · Mercari · BANDAI NAMCO · Sky · Neo4j · MISP Project and more |
-| 📜 National CERT | IPA (情報処理推進機構), **7** acknowledgements |
+| Program | Recognition |
+|---------|-------------|
+| Microsoft Security Response Center (MSRC) | **HE WEI · 2027 Special Mention** |
+| Google | **Honorable Mentions** |
+| Red Hat / libvirt | **CVE-2026-63622 · CVE-2026-63623** |
+| Linux Kernel | **CVE-2026-68326 · CVE-2026-68402 · CVE-2026-64339** |
+| Apple Security | **CVE-2026-43806** |
+| National CERT | IPA (情報処理推進機構), **7 acknowledgements** |
+| Responsible Disclosure | Rakuten · Mercari · BANDAI NAMCO · Sky · Neo4j · MISP Project and more |
 
 > 🧵 Selected write-ups and PoCs are available on the [blog](https://skypoc.wordpress.com)
 
@@ -136,9 +151,11 @@
 
 | Area | Topics |
 |------|--------|
-| **Research** | MCP and LLM tooling security&nbsp;•&nbsp;Cloud security&nbsp;•&nbsp;Memory safety in system daemons |
+| **Research** | Linux kernel&nbsp;•&nbsp;Virtualization and libvirt&nbsp;•&nbsp;MCP and LLM tooling security&nbsp;•&nbsp;Native-code trust boundaries |
+| **Red Team** | APT emulation&nbsp;•&nbsp;TLPT&nbsp;•&nbsp;Active Directory&nbsp;•&nbsp;Azure / Entra ID&nbsp;•&nbsp;Cloud attack paths |
+| **Methodology** | Source code review&nbsp;•&nbsp;Dynamic validation&nbsp;•&nbsp;Patch analysis&nbsp;•&nbsp;Reproducible PoCs |
 | **Tooling** | Detection and exploitation PoCs&nbsp;•&nbsp;Security automation |
-| **Sharing** | Conference talks (CFP in progress)&nbsp;•&nbsp;Bilingual technical blogging |
-| **Next** | OSED and OSCE3&nbsp;•&nbsp;Continued coordinated disclosure work |
+| **Sharing** | Conference talks and CFPs&nbsp;•&nbsp;Bilingual technical blogging&nbsp;•&nbsp;Coordinated disclosure |
+| **Next** | OSED and OSCE3&nbsp;•&nbsp;Continued systems and vulnerability research |
 
 ---
