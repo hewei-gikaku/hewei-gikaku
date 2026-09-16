@@ -10,7 +10,7 @@
   </a>
   <img src="https://img.shields.io/badge/CVEs-50-DD0000?style=flat-square"/>
   <img src="https://img.shields.io/badge/MSRC-2027_Special_Mention-0078D4?style=flat-square&logo=microsoft&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Google-Honorable_Mentions-4285F4?style=flat-square&logo=google&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Google-Leaderboard-4285F4?style=flat-square&logo=google&logoColor=white"/>
 </p>
 
 ---
