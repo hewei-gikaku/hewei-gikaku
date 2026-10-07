@@ -9,6 +9,7 @@
     <img src="https://img.shields.io/badge/Blog-gikaku.net-21759B?style=flat-square&logo=wordpress&logoColor=white"/>
   </a>
   <img src="https://img.shields.io/badge/CVEs-50%2B-DD0000?style=flat-square"/>
+  <img src="https://img.shields.io/badge/CRTO-Certified-111111?style=flat-square"/>
   <img src="https://img.shields.io/badge/MSRC-2027_Special_Mention-0078D4?style=flat-square&logo=microsoft&logoColor=white"/>
   <img src="https://img.shields.io/badge/Google-Bug_Hunters_Leaderboard-4285F4?style=flat-square&logo=google&logoColor=white"/>
 </p>
@@ -23,9 +24,9 @@ My professional work includes threat-led penetration testing, adversary simulati
 
 I work across Active Directory, hybrid identity, Azure and Microsoft Entra ID, AWS, OCI, initial access, phishing simulation, C2 infrastructure, privilege escalation, lateral movement, EDR/XDR evasion, Web and API security, source code review, and exploit development.
 
-Alongside client work, I conduct independent vulnerability research across **macOS, the Linux kernel, virtualization, identity systems, cloud security, and AI infrastructure**.
+Alongside client work, I conduct independent vulnerability research across **macOS, the Linux kernel, virtualization, identity systems, cloud security, container build systems, and AI infrastructure**.
 
-My research has contributed to **50+ assigned CVEs**, including vulnerabilities in Apple macOS, Linux, Google security projects, Keycloak, libvirt, Docker MCP Gateway, IBM ContextForge, and official Model Context Protocol SDKs.
+My research has contributed to **50+ assigned CVEs**, including vulnerabilities in Apple macOS, Linux, Google security projects, Keycloak, libvirt, Docker BuildKit, Docker MCP Gateway, IBM ContextForge, and official Model Context Protocol SDKs.
 
 I have also authored security fixes accepted upstream into the **Linux kernel** and **libvirt**.
 
@@ -46,9 +47,10 @@ Technical write-ups and research notes are published at [gikaku.net](https://gik
 | Active Directory | OCI | macOS |
 | Initial access / phishing | GCP research | Linux kernel |
 | C2 infrastructure | IAM privilege escalation | Virtualization / libvirt |
-| Privilege escalation | Credential and token abuse | Identity systems |
-| Lateral movement | Hybrid identity | MCP / AI infrastructure |
-| EDR/XDR evasion | Cloud attack paths | PoC development |
+| Privilege escalation | Credential and token abuse | Container / build security |
+| Lateral movement | Hybrid identity | Identity systems |
+| EDR/XDR evasion | Cloud attack paths | MCP / AI infrastructure |
+| Web / API security | Workload identity | PoC development |
 
 ---
 
@@ -62,6 +64,8 @@ Technical write-ups and research notes are published at [gikaku.net](https://gik
 | **CVE-2026-19202** | **Google mcp-toolbox-sdk-python** | Cross-audience Google ID token reuse caused by an audience-unaware token cache. Assigned CVSS v4.0 **9.1 Critical**. |
 | **CVE-2026-53709** | **IBM ContextForge** | Authentication failure that could permit unauthenticated platform-administrator access in affected default configurations. CVSS v3.1 **9.8 Critical**. |
 | **CVE-2026-76092** | **Docker MCP Gateway** | Authentication enforcement failure in the gateway execution path. CVSS v4.0 **9.2 Critical**. |
+| **CVE-2026-93316** | **Docker BuildKit** | A specially constructed build could trigger a `buildkitd` panic when CDI support was disabled, affecting daemon availability. CVSS v4.0 **7.1 High**. |
+| **CVE-2026-93317** | **Docker BuildKit** | Unverified blob content could be cached under an attacker-controlled claimed digest and later reused by another build, compromising build-input integrity. CVSS v4.0 **5.9 Medium**. |
 | **CVE-2026-63622** | **libvirt** | Host-side privilege boundary issue involving `swtpm` state handling and privileged filesystem ownership operations. CVSS v3.1 **7.8 High**. |
 | **CVE-2026-92358** | **Keycloak** | Residual account-link proof could be reused to silently re-establish a removed external identity link. CVSS v3.1 **6.4 Medium**. |
 
@@ -115,6 +119,34 @@ Other Linux kernel findings for which I authored upstream fixes include:
 [CVE-2026-90048 technical write-up](https://gikaku.net/2026/09/17/cve-2026-90048/)
 
 [Upstream Linux kernel fix](https://github.com/torvalds/linux/commit/7c4841e2a62794a3bab7c1ff0540580f387e377f)
+
+---
+
+## Docker BuildKit Research
+
+### CVE-2026-93316 · BuildKit Daemon Panic
+
+I reported a vulnerability affecting BuildKit deployments where CDI support is explicitly disabled.
+
+When `buildkitd` is started with `--cdi-disabled`, a build requesting CDI devices could trigger a daemon panic.
+
+The issue crossed the boundary between a single submitted build and the availability of the shared BuildKit daemon.
+
+Docker assigned the vulnerability **CVSS v4.0 7.1 High** and credits **He Wei** as the finder.
+
+[GitHub Security Advisory](https://github.com/moby/buildkit/security/advisories/GHSA-r456-g3gm-cvxf)
+
+### CVE-2026-93317 · Unverified Blob Cache Content
+
+I co-reported an integrity-validation weakness affecting BuildKit's handling of registry and OCI-layout blob sources.
+
+An unauthenticated attacker controlling a blob source could provide content that did not match its claimed digest.
+
+The resulting snapshot could be cached under that digest and later reused by another build, compromising build-input integrity.
+
+Docker assigned the vulnerability **CVSS v4.0 5.9 Medium** and credits **He Wei** and **Haoxiang Yan** as the finders.
+
+[GitHub Security Advisory](https://github.com/moby/buildkit/security/advisories/GHSA-p3rc-w3hc-pqvv)
 
 ---
 
@@ -218,12 +250,28 @@ Red Hat assigned **CVSS v3.1 5.5 Medium**.
 | **Microsoft Security Response Center** | HE WEI · 2027 Special Mention |
 | **Google Bug Hunters** | Leaderboard |
 | **Apple Security** | CVE-2026-64704 · CVE-2026-65374 · CVE-2026-43677 · CVE-2026-43806 |
+| **Docker / BuildKit** | CVE-2026-93316 · CVE-2026-93317 |
 | **Red Hat / Keycloak** | CVE-2026-82968 · CVE-2026-92358 |
 | **Red Hat / libvirt** | CVE-2026-63622 · CVE-2026-63623 |
 | **Linux Kernel** | CVE-2026-90048 · CVE-2026-64339 · CVE-2026-68326 · CVE-2026-68402 |
 | **IPA** | 7 vulnerability acknowledgements |
 
 Other responsible disclosure acknowledgements include **Rakuten, Mercari, BANDAI NAMCO, Sky, Neo4j, MISP Project, SBI Holdings, Seven Bank, Yahoo Japan, Keysight, Lumen, Clarivate**, and others.
+
+---
+
+## Certifications
+
+**CRTO · OSEP · OSWE · OSCP · OSWP · CARTP · PNPT · AWS Certified Security - Specialty**
+
+- **Certified Red Team Operator (CRTO)** · Zero-Point Security
+- **OffSec Experienced Penetration Tester (OSEP)** · OffSec
+- **OffSec Web Expert (OSWE)** · OffSec
+- **OffSec Certified Professional (OSCP)** · OffSec
+- **OffSec Wireless Professional (OSWP)** · OffSec
+- **Certified Azure Red Team Professional (CARTP)** · Altered Security
+- **Practical Network Penetration Tester (PNPT)** · TCM Security
+- **AWS Certified Security - Specialty** · Amazon Web Services
 
 ---
 
@@ -243,14 +291,6 @@ Research on source review, variant hunting, patch-gap analysis, and coordinated 
 
 ---
 
-## Selected Certifications
-
-**OSEP · OSWE · OSCP · CARTP · AWS Certified Security - Specialty**
-
-Currently working toward **OSED** and the **OSCE3** certification path.
-
----
-
 ## Current Focus
 
 | Area | Current Work |
@@ -259,6 +299,7 @@ Currently working toward **OSED** and the **OSCE3** certification path.
 | Cloud | GCP · Azure / Entra ID · AWS · OCI · IAM · Cloud attack paths |
 | Identity | Authentication · Federation · Credentials · Token boundaries |
 | Systems | macOS · Linux kernel · libvirt · Native code |
+| Containers | BuildKit · Build integrity · Container security boundaries |
 | MCP / AI | MCP servers · SDKs · Authentication · Authorization · Isolation |
 | Research | Source code review · Dynamic analysis · Patch analysis · PoC development |
 | Sharing | Vulnerability write-ups · Conference talks · Coordinated disclosure |
