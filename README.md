@@ -9,7 +9,6 @@
     <img src="https://img.shields.io/badge/Blog-gikaku.net-21759B?style=flat-square&logo=wordpress&logoColor=white"/>
   </a>
   <img src="https://img.shields.io/badge/CVEs-50%2B-DD0000?style=flat-square"/>
-  <img src="https://img.shields.io/badge/CRTO-Certified-111111?style=flat-square"/>
   <img src="https://img.shields.io/badge/MSRC-2027_Special_Mention-0078D4?style=flat-square&logo=microsoft&logoColor=white"/>
   <img src="https://img.shields.io/badge/Google-Bug_Hunters_Leaderboard-4285F4?style=flat-square&logo=google&logoColor=white"/>
 </p>
