@@ -11,6 +11,14 @@
   <img src="https://img.shields.io/badge/CVEs-50%2B-DD0000?style=flat-square"/>
   <img src="https://img.shields.io/badge/MSRC-2027_Special_Mention-0078D4?style=flat-square&logo=microsoft&logoColor=white"/>
   <img src="https://img.shields.io/badge/Google-Bug_Hunters_Leaderboard-4285F4?style=flat-square&logo=google&logoColor=white"/>
+  <br/>
+  <img alt="CRTO" src="https://img.shields.io/badge/CRTO-5B21B6?style=flat-square"/>
+  <img alt="OSEP" src="https://img.shields.io/badge/OSEP-C72C42?style=flat-square"/>
+  <img alt="OSWE" src="https://img.shields.io/badge/OSWE-C72C42?style=flat-square"/>
+  <img alt="OSCP" src="https://img.shields.io/badge/OSCP-C72C42?style=flat-square"/>
+  <img alt="OSWP" src="https://img.shields.io/badge/OSWP-C72C42?style=flat-square"/>
+  <img alt="CARTP" src="https://img.shields.io/badge/CARTP-0078D4?style=flat-square"/>
+  <img alt="AWS Certified Security - Specialty" src="https://img.shields.io/badge/AWS-Security_Specialty-232F3E?style=flat-square&amp;logo=amazonaws&amp;logoColor=FF9900"/>
 </p>
 
 ---
