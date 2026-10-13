@@ -24,9 +24,9 @@ My professional work includes threat-led penetration testing, adversary simulati
 
 I work across Active Directory, hybrid identity, Azure and Microsoft Entra ID, AWS, OCI, initial access, phishing simulation, C2 infrastructure, privilege escalation, lateral movement, EDR/XDR evasion, Web and API security, source code review, and exploit development.
 
-Alongside client work, I conduct independent vulnerability research across **macOS, the Linux kernel, virtualization, identity systems, cloud security, container build systems, and AI infrastructure**.
+Alongside client work, I conduct independent vulnerability research across **macOS, Windows Subsystem for Linux, the Linux kernel, virtualization, identity systems, cloud security, container build systems, and AI infrastructure**.
 
-My research has contributed to **50+ assigned CVEs**, including vulnerabilities in Apple macOS, Linux, Google security projects, Keycloak, libvirt, Docker BuildKit, Docker MCP Gateway, IBM ContextForge, and official Model Context Protocol SDKs.
+My research has contributed to **50+ assigned CVEs**, including vulnerabilities in Apple macOS, Windows Subsystem for Linux, the Linux kernel, Google security projects, Keycloak, libvirt, Docker BuildKit, Docker MCP Gateway, IBM ContextForge, and official Model Context Protocol SDKs.
 
 I have also authored security fixes accepted upstream into the **Linux kernel** and **libvirt**.
 
@@ -60,6 +60,7 @@ Technical write-ups and research notes are published at [gikaku.net](https://gik
 |---|---|---|
 | **CVE-2026-64704** | **Apple macOS SMB** | Type confusion in the macOS SMB implementation. Apple credits me alongside Cisco Talos, Calif.io, and other researchers. CISA-ADP assigned CVSS v3.1 **9.8 Critical**. |
 | **CVE-2026-65374** | **Apple macOS WebDAV** | Memory corruption reachable through a malicious WebDAV server. Apple's published impact states that exploitation may result in **code execution**. CISA-ADP assigned CVSS v3.1 **8.8 High**. |
+| **[CVE-2026-85879](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85879)** | **Windows Subsystem for Linux** | Local privilege escalation in `ILxssUserSession::MoveDistribution`. A junction race redirected a privileged owner-repair open to an existing protected file. MSRC assigned **CVSS v3.1 7.0 Important**. |
 | **CVE-2026-90048** | **Linux Kernel NTFS3** | Slab out-of-bounds write in `ni_create_attr_list()`. I discovered the issue, reproduced the heap corruption under KASAN, and authored the fix accepted upstream. |
 | **CVE-2026-19202** | **Google mcp-toolbox-sdk-python** | Cross-audience Google ID token reuse caused by an audience-unaware token cache. Assigned CVSS v4.0 **9.1 Critical**. |
 | **CVE-2026-53709** | **IBM ContextForge** | Authentication failure that could permit unauthenticated platform-administrator access in affected default configurations. CVSS v3.1 **9.8 Critical**. |
@@ -119,6 +120,24 @@ Other Linux kernel findings for which I authored upstream fixes include:
 [CVE-2026-90048 technical write-up](https://gikaku.net/2026/09/17/cve-2026-90048/)
 
 [Upstream Linux kernel fix](https://github.com/torvalds/linux/commit/7c4841e2a62794a3bab7c1ff0540580f387e377f)
+
+---
+
+## Windows Subsystem for Linux Research
+
+### CVE-2026-85879 · MoveDistribution Local Privilege Escalation
+
+I reported a time-of-check/time-of-use race in WSL's `ILxssUserSession::MoveDistribution`.
+
+The service moved a file while impersonating the caller, then reopened the destination by name as `SYSTEM` to restore ownership. By changing a parent junction between those operations, I made the second open reach a different, protected file.
+
+On WSL 2.9.4.0, the service assigned my standard user's SID as owner of the protected test file. I then changed its DACL and wrote to it.
+
+MSRC credited my report under **CVE-2026-85879** alongside vurmusum and rated the vulnerability **CVSS v3.1 7.0 Important**.
+
+[Technical write-up](https://gikaku.net/2026/10/14/cve-2026-85879/)
+
+[MSRC advisory](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85879)
 
 ---
 
@@ -247,7 +266,7 @@ Red Hat assigned **CVSS v3.1 5.5 Medium**.
 
 | Program / Organization | Recognition |
 |---|---|
-| **Microsoft Security Response Center** | HE WEI · 2027 Special Mention |
+| **Microsoft Security Response Center** | HE WEI · 2027 Special Mention · CVE-2026-85879 |
 | **Google Bug Hunters** | Leaderboard |
 | **Apple Security** | CVE-2026-64704 · CVE-2026-65374 · CVE-2026-43677 · CVE-2026-43806 |
 | **Docker / BuildKit** | CVE-2026-93316 · CVE-2026-93317 |
@@ -298,7 +317,7 @@ Research on source review, variant hunting, patch-gap analysis, and coordinated 
 | Red Team | TLPT · Active Directory · Initial access · C2 · EDR/XDR evasion |
 | Cloud | GCP · Azure / Entra ID · AWS · OCI · IAM · Cloud attack paths |
 | Identity | Authentication · Federation · Credentials · Token boundaries |
-| Systems | macOS · Linux kernel · libvirt · Native code |
+| Systems | macOS · Windows / WSL · Linux kernel · libvirt · Native code |
 | Containers | BuildKit · Build integrity · Container security boundaries |
 | MCP / AI | MCP servers · SDKs · Authentication · Authorization · Isolation |
 | Research | Source code review · Dynamic analysis · Patch analysis · PoC development |
