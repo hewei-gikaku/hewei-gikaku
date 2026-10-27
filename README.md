@@ -33,7 +33,7 @@ I work across Active Directory, hybrid identity, Azure and Microsoft Entra ID, A
 
 Alongside client work, I conduct independent vulnerability research across **macOS, Windows Subsystem for Linux, the Linux kernel, virtualization, identity systems, cloud security, container build systems, and AI infrastructure**.
 
-My research has contributed to **50+ assigned CVEs**, including vulnerabilities in Apple macOS, Windows Subsystem for Linux, the Linux kernel, Google security projects, Keycloak, libvirt, Docker BuildKit, Docker MCP Gateway, IBM ContextForge, and official Model Context Protocol SDKs.
+My research has contributed to **50+ assigned CVEs**, including vulnerabilities in Apple operating systems, Windows Subsystem for Linux, the Linux kernel, Google security projects, Keycloak, libvirt, Docker BuildKit, Docker MCP Gateway, IBM ContextForge, and official Model Context Protocol SDKs.
 
 I have also authored security fixes accepted upstream into the **Linux kernel** and **libvirt**.
 
@@ -65,6 +65,9 @@ Technical write-ups and research notes are published at [gikaku.net](https://gik
 
 | CVE | Project | Research |
 |---|---|---|
+| **[CVE-2026-86942](https://support.apple.com/en-us/149522)** | **Apple Heimdal** | Independently reported out-of-bounds read that could allow an app to cause a denial-of-service. Apple lists me as the sole credited researcher. |
+| **[CVE-2026-93328](https://www.cve.org/CVERecord?id=CVE-2026-93328)** | **Google Cloud MCP Toolbox** | Missing authorization and path traversal in the `cloud-storage` source allowed arbitrary host file read and write. Google Cloud lists me as the sole credited reporter and assigns **CVSS v4.0 9.3 Critical**. |
+| **[CVE-2026-108395](https://github.com/modelcontextprotocol/java-sdk/security/advisories/GHSA-4x8c-5vv7-973f)** | **Official MCP Java SDK** | Independently reported unbounded HTTP request-body reads leading to remote heap exhaustion. Shared advisory credit with other reporters. **CVSS v3.1 7.5 High**. |
 | **CVE-2026-64704** | **Apple macOS SMB** | Type confusion in the macOS SMB implementation. Apple credits me alongside Cisco Talos, Calif.io, and other researchers. CISA-ADP assigned CVSS v3.1 **9.8 Critical**. |
 | **CVE-2026-65374** | **Apple macOS WebDAV** | Memory corruption reachable through a malicious WebDAV server. Apple's published impact states that exploitation may result in **code execution**. CISA-ADP assigned CVSS v3.1 **8.8 High**. |
 | **[CVE-2026-85879](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85879)** | **Windows Subsystem for Linux** | Local privilege escalation in `ILxssUserSession::MoveDistribution`. A junction race redirected a privileged owner-repair open to an existing protected file. MSRC assigned **CVSS v3.1 7.0 Important**. |
@@ -79,7 +82,7 @@ Technical write-ups and research notes are published at [gikaku.net](https://gik
 
 ---
 
-## macOS Security Research
+## Apple Security Research
 
 ### CVE-2026-64704 · SMB Type Confusion
 
@@ -103,6 +106,16 @@ My other Apple-credited findings include:
 [Apple security advisory for CVE-2026-64704](https://support.apple.com/en-us/128067)
 
 [CVE-2026-65374 technical write-up](https://gikaku.net/2026/09/15/cve-2026-65374/)
+
+### CVE-2026-86942 · Heimdal Out-of-Bounds Read
+
+I independently discovered and reported an out-of-bounds read in Apple's **Heimdal** component.
+
+Apple describes the impact as an app being able to cause a denial-of-service and addressed the issue with improved bounds checking in updates including **macOS Tahoe 26.7.2** and **iOS and iPadOS 26.7.2**.
+
+Those advisories list **He Wei (ギカク)** as the sole researcher credited for this CVE.
+
+[Apple macOS security advisory](https://support.apple.com/en-us/149522) · [Apple iOS and iPadOS security advisory](https://support.apple.com/en-us/149227)
 
 ---
 
@@ -209,6 +222,12 @@ I have conducted extensive vulnerability research into the Model Context Protoco
 
 ### Google MCP Toolbox
 
+I reported **[CVE-2026-93328](https://www.cve.org/CVERecord?id=CVE-2026-93328)**, a missing-authorization and path-traversal vulnerability in the `cloud-storage` source.
+
+An unauthenticated remote attacker could use crafted tool invocation parameters to exfiltrate host files to external Google Cloud Storage buckets and overwrite arbitrary local files.
+
+Google Cloud lists **He Wei (gikaku)** as the sole credited reporter and assigns **CVSS v4.0 9.3 Critical**. The issue affected versions **1.2.0 through 1.4.0** and was addressed in **1.5.0**.
+
 Reported vulnerabilities include:
 
 `CVE-2026-11719` · `CVE-2026-14537` · `CVE-2026-14538` · `CVE-2026-14539` · `CVE-2026-14541` · `CVE-2026-16481`
@@ -235,6 +254,7 @@ Reported:
 Additional research includes vulnerabilities affecting:
 
 - Official MCP Python SDK
+- Official MCP Java SDK
 - Official MCP Kotlin SDK
 - Official MCP Ruby SDK
 - Official MCP Rust SDK
@@ -242,6 +262,14 @@ Additional research includes vulnerabilities affecting:
 - HashiCorp Consul MCP Server
 - Contentful MCP Server
 - dbt Labs MCP Server
+
+I independently reported **CVE-2026-108395**, a remote denial-of-service vulnerability in the official **MCP Java SDK**.
+
+Its Servlet-based SSE, Streamable HTTP, and Stateless server transports could read an HTTP request body into memory without a maximum size. An unauthenticated remote client able to reach the affected read could exhaust the JVM heap with a streamed POST body. Authentication, Origin or Host validation, or an upstream request-size limit could reject the request before that read.
+
+The advisory assigns **CVSS v3.1 7.5 High** and credits **hewei-gikaku** alongside other reporters. The maintained `mcp-core` lines were fixed in **0.18.4, 1.1.4, and 2.0.1**.
+
+[GitHub Security Advisory](https://github.com/modelcontextprotocol/java-sdk/security/advisories/GHSA-4x8c-5vv7-973f)
 
 Representative findings include:
 
@@ -275,7 +303,7 @@ Red Hat assigned **CVSS v3.1 5.5 Medium**.
 |---|---|
 | **Microsoft Security Response Center** | HE WEI · 2027 Special Mention · CVE-2026-85879 |
 | **Google Bug Hunters** | Leaderboard |
-| **Apple Security** | CVE-2026-64704 · CVE-2026-65374 · CVE-2026-43677 · CVE-2026-43806 |
+| **Apple Security** | CVE-2026-64704 · CVE-2026-65374 · CVE-2026-43677 · CVE-2026-43806 · CVE-2026-86942 |
 | **Docker / BuildKit** | CVE-2026-93316 · CVE-2026-93317 |
 | **Red Hat / Keycloak** | CVE-2026-82968 · CVE-2026-92358 |
 | **Red Hat / libvirt** | CVE-2026-63622 · CVE-2026-63623 |
